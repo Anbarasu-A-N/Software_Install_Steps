@@ -3,6 +3,7 @@
 
 # Use this for Script file or User data
 #!/bin/bash 
+
 set -e
 
 # Update the System First
