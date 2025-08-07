@@ -15,7 +15,7 @@ sudo apt upgrade
 
 # Docker Install
 
-sudo apt install docker.io
+sudo apt install docker.io -y
 
 sudo systemctl start docker
 
