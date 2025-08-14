@@ -8,9 +8,9 @@ set -e
 
 # Update the System First
 
-sudo apt update
+sudo apt update -y
 
-sudo apt upgrade
+sudo apt upgrade -y
 
 
 # Docker Install
@@ -40,12 +40,33 @@ sudo apt install -y terraform
 
 terraform -version
 
+# Install Apache
+sudo apt install -y apache2
+
+sudo systemctl enable apache2
+sudo systemctl start apache2
+
+sudo systemctl status apache2
+
+sudo chown -R ubuntu:ubuntu /var/www/html/
+
+
+# Install Node
+
+sudo apt install -y curl
+
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+
+sudo apt install -y nodejs
+
+sudo npm install
+
+npm run dev
+## Update all packages to the latest allowed by package.json
+npm update
+
 
 # Install Java
-
-sudo apt update
-
-sudo apt upgrade -y
 
 sudo apt install openjdk-17-jdk -y
 
