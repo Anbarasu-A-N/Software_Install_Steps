@@ -44,6 +44,7 @@ terraform -version
 sudo apt install -y apache2
 
 sudo systemctl enable apache2
+
 sudo systemctl start apache2
 
 sudo systemctl status apache2
@@ -59,11 +60,26 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
 sudo apt install -y nodejs
 
+sudo npm update
+
 sudo npm install
 
 npm run dev
+
+# Using Apache2 and Node to deploy the website from Git
+git clone https://github.com/Anbarasu-A-N/Anbarasu_Portfolio.git
+
+cd Anbarasu_Portfolio
 ## Update all packages to the latest allowed by package.json
 npm update
+
+rm -r * /var/www/html/
+
+sudo npm install
+
+npm run build
+
+sudo cp -r dist/* /var/www/html/
 
 
 # Install Java
