@@ -116,7 +116,7 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
 
 sudo apt-get update
 
-sudo apt-get install jenkins -y
+sudo apt-get install -y jenkins
 
 echo ""
 echo "========================================================================================================================================================================================"
