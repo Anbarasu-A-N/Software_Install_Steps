@@ -31,6 +31,36 @@ echo ""
 echo "========================================================================================================================================================================================"
 echo ""
 
+
+# Install Java
+
+sudo apt install openjdk-17-jdk -y
+
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
+
+# Install Jenkins
+
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+
+sudo apt-get install -y jenkins
+
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
+
+sudo systemctl start jenkins
+
+sudo systemctl enable jenkins
+
+
 # Terraform Install
 
 sudo apt update && sudo apt install -y software-properties-common gnupg curl
@@ -98,32 +128,5 @@ echo ""
 echo "========================================================================================================================================================================================"
 echo ""
 
-# Install Java
-
-sudo apt install openjdk-17-jdk -y
-
-echo ""
-echo "========================================================================================================================================================================================"
-echo ""
-
-# Install Jenkins
-
-sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
-  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
-  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-  /etc/apt/sources.list.d/jenkins.list > /dev/null
-
-sudo apt-get update
-
-sudo apt-get install -y jenkins
-
-echo ""
-echo "========================================================================================================================================================================================"
-echo ""
-
-sudo systemctl start jenkins
-
-sudo systemctl enable jenkins
 
 
