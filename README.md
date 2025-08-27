@@ -12,6 +12,10 @@ sudo apt update -y
 
 sudo apt upgrade -y
 
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
+
 
 # Docker Install
 
@@ -23,20 +27,25 @@ sudo systemctl enable docker
 
 docker --version
 
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
 
 # Terraform Install
 
 sudo apt update && sudo apt install -y software-properties-common gnupg curl
 
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg -y
 
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-
-sudo apt update
 
 sudo apt install -y terraform
 
 terraform -version
+
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
 
 # Install Apache
 sudo apt install -y apache2
@@ -49,6 +58,10 @@ sudo systemctl status apache2
 
 sudo chown -R ubuntu:ubuntu /var/www/html/
 
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
+
 
 # Install Node
 
@@ -58,18 +71,19 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
 sudo apt install -y nodejs
 
-sudo npm update
+node -version
+npm -version
 
-sudo npm install
-
-npm run dev
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
 
 # Using Apache2 and Node to deploy the website from Git
 git clone https://github.com/Anbarasu-A-N/Anbarasu_Portfolio.git
 
 cd Anbarasu_Portfolio
 ## Update all packages to the latest allowed by package.json
-npm update
+sudo npm update
 
 rm -r * /var/www/html/
 
@@ -79,11 +93,17 @@ npm run build
 
 sudo cp -r dist/* /var/www/html/
 
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
 
 # Install Java
 
 sudo apt install openjdk-17-jdk -y
 
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
 
 # Install Jenkins
 
@@ -96,6 +116,10 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
 sudo apt-get update
 
 sudo apt-get install jenkins -y
+
+echo ""
+echo "========================================================================================================================================================================================"
+echo ""
 
 sudo systemctl start jenkins
 
