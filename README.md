@@ -21,7 +21,7 @@ sudo systemctl start docker
 
 sudo systemctl enable docker
 
-docker version
+docker --version
 
 
 # Terraform Install
