@@ -60,6 +60,11 @@ sudo apt-get update
 
 sudo apt-get install -y jenkins
 
+sudo bash -c 'cat > /etc/sudoers.d/jenkins <<EOF
+jenkins ALL=(ALL) NOPASSWD:ALL
+Defaults:jenkins !requiretty
+EOF'
+
 echo ""
 echo "========================================================================================================================================================================================"
 echo ""
