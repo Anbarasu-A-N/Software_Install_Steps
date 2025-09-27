@@ -63,10 +63,12 @@ echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install -y jenkins
+
 sudo bash -c 'cat > /etc/sudoers.d/jenkins <<EOF
 jenkins ALL=(ALL) NOPASSWD:ALL
 Defaults:jenkins !requiretty
 EOF'
+
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 
