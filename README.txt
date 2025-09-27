@@ -13,6 +13,34 @@ echo "==========================================================================
 echo ""
 
 
+# Create user 'devops' with password 'devops123' and give full passwordless sudo
+# Create the user with home directory and bash shell
+sudo useradd -m -s /bin/bash devops
+
+# Set password (non-interactive)
+echo "devops:devops123" | sudo chpasswd
+
+# Add user to sudo group
+sudo usermod -aG sudo devops
+
+# Create sudoers file for passwordless sudo
+sudo bash -c 'cat > /etc/sudoers.d/devops <<EOF
+devops ALL=(ALL) NOPASSWD:ALL
+Defaults:devops !requiretty
+EOF'
+
+# Allow the login with passwd
+sudo echo "PasswordAuthentication yes" >>  /etc/ssh/sshd_config
+sudo echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
+sudo echo "PasswordAuthentication yes" > /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
+sudo systemctl restart ssh
+
+
+echo ""
+echo "==================================================================================="
+echo ""
+
+
 # Docker Install
 sudo apt install docker.io -y
 sudo systemctl start docker
