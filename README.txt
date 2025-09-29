@@ -84,6 +84,7 @@ echo ""
 
 
 # Install Jenkins
+# Master Settings and must install java and jenkins
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
@@ -100,6 +101,11 @@ EOF'
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 
+# Node Settings and must install java 
+sudo su
+mkdir /opt/jenkins
+chown ubuntu:ubuntu /opt/jenkins
+chmod 755 /opt
 
 echo ""
 echo "==================================================================================="
