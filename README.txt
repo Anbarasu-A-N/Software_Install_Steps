@@ -137,7 +137,7 @@ echo ""
 
 
 # Install PostgreSQL
-sudo apt install postgresql postgresql-contrib
+sudo apt install postgresql postgresql-contrib -y
 sudo systemctl status postgresql
 psql --version
 
