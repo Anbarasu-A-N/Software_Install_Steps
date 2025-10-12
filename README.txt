@@ -136,6 +136,17 @@ echo "==========================================================================
 echo ""
 
 
+# Install PostgreSQL
+sudo apt install postgresql postgresql-contrib
+sudo systemctl status postgresql
+psql --version
+
+
+echo ""
+echo "==================================================================================="
+echo ""
+
+
 # Install Node
 sudo apt install -y curl
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
@@ -167,6 +178,7 @@ sudo cp -r dist/* /var/www/html/
 echo ""
 echo "==================================================================================="
 echo ""
+
 
 
 
