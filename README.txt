@@ -101,7 +101,7 @@ EOF'
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 
-# Node Settings and must install java 
+# For Jenkins Node Settings and you must install java on each node
 sudo su
 mkdir /opt/jenkins
 chown ubuntu:ubuntu /opt/jenkins
