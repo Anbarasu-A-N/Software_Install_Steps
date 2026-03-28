@@ -30,9 +30,13 @@ Defaults:devops !requiretty
 EOF'
 
 # Allow the login with passwd
-sudo echo "PasswordAuthentication yes" >>  /etc/ssh/sshd_config
-sudo echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
-sudo echo "PasswordAuthentication yes" > /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
+sudo sed -i 's/^#\?PasswordAuthentication.*//g' /etc/ssh/sshd_config 
+echo "PasswordAuthentication yes" | sudo tee -a /etc/ssh/sshd_config 
+
+sudo sed -i 's/^#\?PermitRootLogin.*//g' /etc/ssh/sshd_config
+echo "PermitRootLogin no" | sudo tee -a /etc/ssh/sshd_config
+
+echo "PasswordAuthentication yes" | sudo tee /etc/ssh/sshd_config.d/60-cloudimg-settings.conf
 sudo systemctl restart ssh
 
 
